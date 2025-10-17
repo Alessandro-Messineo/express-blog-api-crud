@@ -9,12 +9,17 @@ function index(req, res) {
 }
 
 function show(req, res) {
+    // rendo l'id un numero intero e lo salvo
     const id = parseInt(req.params.id);
+
+     // cerco il post tramite l'id 
     const post = posts.find((e) => e.id === id)
+
+     // condizione se il post viene trovato o no
     if (post) {
+
+        // restituisco la lista
         res.json(post);
-    } else {
-        res.status(404).json({ message: "error" })
     }
 }
 
@@ -27,7 +32,25 @@ function update(req, res) {
 }
 
 function destroy(req, res) {
-    res.send('Eliminazione del post ' + req.params.id);
+
+    // rendo l'id un numero intero e lo salvo
+    const id = parseInt(req.params.id)
+
+    // cerco il post tramite l'id 
+    const post = posts.find(e => e.id === id);
+
+    // condizione se il post viene trovato o no
+    if(posts){
+    
+        // elimino il post
+        posts.splice(posts.indexOf(post), 1)
+        ;
+        // stampo la lista aggiornata
+        console.log(posts);
+
+        // cambio dello stato
+        res.sendStatus(204)
+    }
 }
 
 // esporto tutto
