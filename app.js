@@ -15,10 +15,6 @@ app.get("/",(req, res) =>{
     res.send(`<h1> Server del mio blog </h1>`)
 })
 
-// rotta della bacheca
-// app.get("/bacheca",(req, res) =>{
-    
-// });
 
 // rotta dei post
 app.use("/posts", postRouter);
