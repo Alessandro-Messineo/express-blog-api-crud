@@ -5,7 +5,22 @@ const posts = require('../data/postsArray');
 // setto le funzioni che andranno nelle rotte
 
 function index(req, res) {
-    res.json(posts);
+    // res.json(posts);
+
+
+     //Inizialmente, il menu filtrato corrisponde a quello originale
+    let filteredPosts = posts;
+
+    // Se la richiesta contiene un filtro, allora filtriamo il menu
+    if (req.query.tags) {
+        filteredPosts = posts.filter(
+            post => post.tags.includes(req.query.tags)
+        );
+    }
+
+    // restituiamo la variabile filteredMenu
+    // potrebbe essere stata filtrata o contenere il menu originale
+    res.json(filteredPosts);
 }
 
 function show(req, res) {
