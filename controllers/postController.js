@@ -20,6 +20,8 @@ function show(req, res) {
 
         // restituisco la lista
         res.json(post);
+    }else{
+         res.status(404).json({ message: "error, post non trovato" })
     }
 }
 
@@ -50,6 +52,8 @@ function destroy(req, res) {
 
         // cambio dello stato
         res.sendStatus(204)
+    }else{
+         res.status(404).json({ message: "error, post non trovato" })
     }
 }
 
