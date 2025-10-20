@@ -19,6 +19,9 @@ app.get("/",(req, res) =>{
 // rotta dei post
 app.use("/posts", postRouter);
 
+// body-parser
+app.use(express.json());
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
