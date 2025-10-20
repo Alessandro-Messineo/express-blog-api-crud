@@ -1,6 +1,5 @@
 // importo express
 const express = require("express");
-const posts = require("../data/postsArray");
 
 // settiamo il router
 const router = express.Router();
