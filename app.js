@@ -9,6 +9,8 @@ const port = 3001;
 const postRouter = require("./routers/posts")
 // importo il middleware per le pagine non trovate
 const notFound = require("./middlewares/notFound")
+// importo il middleware per gli errori nelle pagine
+const errors = require("./middlewares/error")
 
 app.use(express.static('public'));
 
@@ -26,6 +28,9 @@ app.use("/posts", postRouter);
 
 // richiamo il middleware per le pagine non trovate
 app.use(notFound);
+
+// richiamo il middleware per gli errori nelle pagine
+app.use(errors);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
