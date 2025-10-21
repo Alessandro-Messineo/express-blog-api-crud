@@ -7,8 +7,13 @@ const port = 3001;
 
 // importiamo modulo router posts
 const postRouter = require("./routers/posts")
+// importo il middleware per le pagine non trovate
+const notFound = require("./middlewares/notFound")
 
 app.use(express.static('public'));
+
+// body-parser
+app.use(express.json());
 
 // rotta di default
 app.get("/",(req, res) =>{
@@ -19,8 +24,8 @@ app.get("/",(req, res) =>{
 // rotta dei post
 app.use("/posts", postRouter);
 
-// body-parser
-app.use(express.json());
+// richiamo il middleware per le pagine non trovate
+app.use(notFound);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
